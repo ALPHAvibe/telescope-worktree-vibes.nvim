@@ -1,0 +1,10 @@
+cat > .gitignore << 'EOF'
+# Neovim
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+EOF
