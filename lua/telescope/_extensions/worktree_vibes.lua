@@ -317,7 +317,7 @@ local function worktree_picker(opts)
   end
 
   pickers.new(opts, {
-    prompt_title = "Git Worktrees (Ctrl-c create | Ctrl-p set path | Ctrl-r mark | Ctrl-d delete)",
+    prompt_title = "Git Worktrees (Ctrl-c create | Ctrl-Shift-p set path | Ctrl-d mark | Ctrl-r delete)",
     finder = finders.new_table({
       results = worktrees,
       entry_maker = function(entry)
@@ -355,8 +355,8 @@ local function worktree_picker(opts)
         end)
       end)
 
-      -- Ctrl-p: Set default worktree path
-      map("i", "<C-p>", function()
+      -- Ctrl-Shift-p: Set default worktree path
+      map("i", "<C-S-P>", function()
         actions.close(prompt_bufnr)
 
         local current_path = get_default_path() or ""
@@ -372,7 +372,7 @@ local function worktree_picker(opts)
         end)
       end)
 
-      map("n", "<C-p>", function()
+      map("n", "<C-S-P>", function()
         actions.close(prompt_bufnr)
 
         local current_path = get_default_path() or ""
@@ -388,8 +388,8 @@ local function worktree_picker(opts)
         end)
       end)
 
-      -- Ctrl-r: Mark for deletion
-      map("i", "<C-r>", function()
+      -- Ctrl-d: Mark for deletion
+      map("i", "<C-d>", function()
         local current_picker = action_state.get_current_picker(prompt_bufnr)
         local selections = current_picker:get_multi_selection()
 
@@ -430,7 +430,7 @@ local function worktree_picker(opts)
         }), { reset_prompt = false })
       end)
 
-      map("n", "<C-r>", function()
+      map("n", "<C-d>", function()
         local current_picker = action_state.get_current_picker(prompt_bufnr)
         local selections = current_picker:get_multi_selection()
 
@@ -471,8 +471,8 @@ local function worktree_picker(opts)
         }), { reset_prompt = false })
       end)
 
-      -- Ctrl-d: Delete marked worktrees
-      map("i", "<C-d>", function()
+      -- Ctrl-r: Delete marked worktrees
+      map("i", "<C-r>", function()
         local to_delete = {}
         for path, _ in pairs(marked_worktrees) do
           table.insert(to_delete, path)
@@ -517,7 +517,7 @@ local function worktree_picker(opts)
         end
       end)
 
-      map("n", "<C-d>", function()
+      map("n", "<C-r>", function()
         local to_delete = {}
         for path, _ in pairs(marked_worktrees) do
           table.insert(to_delete, path)

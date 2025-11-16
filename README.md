@@ -54,7 +54,7 @@ Open the worktree picker with `:Telescope worktree_vibes` or your configured key
 In the worktree picker:
 - **Enter** - Switch to selected worktree
 - **Ctrl-c** - Create new worktree from branch
-- **Ctrl-p** - Set default worktree path for current repo
+- **Ctrl-Shift-p** - Set default worktree path for current repo
 - **Ctrl-r** - Mark/unmark worktree for deletion
 - **Ctrl-d** - Delete all marked worktrees (with confirmation)
 
